@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone Giveaway Survey</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f7f7f7;
+            padding: 50px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+            text-align: left;
+        }
+        label {
+            font-weight: bold;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            background: #28a745;
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎭 iPhone Giveaway Survey 🎭</h1>
+        <form id="surveyForm">
+            <label>1. Why do you need an iPhone as a student?</label><br>
+            <textarea name="reason" required></textarea><br><br>
+
+            <label>2. Have you ever encountered an online scam before? (Yes/No)</label><br>
+            <input type="text" name="scam_experience" required><br><br>
+
+            <label>3. Do you think everything online is trustworthy? Why?</label><br>
+            <textarea name="trust_opinion" required></textarea><br><br>
+
+            <label>4. What would you do if a website asked for your personal data?</label><br>
+            <textarea name="personal_data_action" required></textarea><br><br>
+
+            <button type="submit" class="btn">Next</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("surveyForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            // Store form data in localStorage
+            let formData = new FormData(this);
+            let surveyData = {};
+            formData.forEach((value, key) => {
+                surveyData[key] = value;
+            });
+            localStorage.setItem("surveyResponses", JSON.stringify(surveyData));
+            
+            // Redirect to the personal info page
+            window.location.href = "info.html";
+        });
+    </script>
+</body>
+</html>
